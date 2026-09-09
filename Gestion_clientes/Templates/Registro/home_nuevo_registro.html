@@ -1,0 +1,380 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Orden de Servicio | TechFix Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#ff4e69",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#d8e3fb",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "outline": "#75777d",
+                    "surface-tint": "#545f73",
+                    "on-surface": "#0b1c30",
+                    "secondary-container": "#6cf8bb",
+                    "surface-variant": "#d3e4fe",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-surface-variant": "#45474c",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#590016",
+                    "secondary": "#006c49",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-fixed-variant": "#92002a",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-secondary-container": "#00714d",
+                    "on-error": "#ffffff",
+                    "tertiary": "#330009",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#111c2d",
+                    "surface-container-high": "#dce9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary-fixed": "#ffdadb",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#1e293b",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "on-secondary-fixed": "#002113",
+                    "tertiary-fixed-dim": "#ffb2b7",
+                    "inverse-primary": "#bcc7de",
+                    "primary": "#091426",
+                    "secondary-fixed-dim": "#4edea3",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed-variant": "#3c475a",
+                    "on-primary-container": "#8590a6",
+                    "on-tertiary-fixed": "#40000d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "container-max": "1440px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #f8f9ff; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] bg-surface dark:bg-surface shadow-sm bg-surface-container dark:bg-surface-container-low flex flex-col py-xl px-lg">
+<div class="mb-xl px-md">
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Registro de clientes</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ingreso Técnico</p>
+</div>
+<nav class="flex-grow space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Resumen</span>
+</a>
+<!-- Active Tab: Service Orders -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary dark:border-primary-fixed-dim bg-surface-container-highest/30 scale-98 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person_add" style="font-variation-settings: &quot;FILL&quot; 1;" data-stitch-orig-opacity="0">person_add</span>
+<span class="font-label-md text-label-md">Nuevo ingreso</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Clientes</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high transition-all duration-200" href="#">
+<img src="https://lh3.googleusercontent.com/aida/AEtjO1WGLU3szyDGrBHfLpNdSvGuAwAbBn3hcsyEwrLpz04_n6turXjyROGBiYrKXTsJm1KtxarzwkKTWWWCZBxUnDg0_1Hcfd97hkXPI2QVO6hQknrezQU9-lLbIHelV3yXA0XIonHZ6-ZabgMU61zWREHzH0Dh6GeTsnA5TNgwBz8f2BiGLU7lFRgMbkhdZplfN4-Scmb1qg8oquvP-mwlLo7XZk545eB0-YBnSzidNr2rHambizcrD5y2Fg" alt="Registros" class="w-5 h-5 rounded object-contain shrink-0">
+<span class="font-label-md text-label-md">Registros</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant/30 pt-xl">
+<button class="w-full flex items-center justify-center gap-sm bg-primary-container text-on-primary py-md rounded-xl font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="">Nueva Orden</span>
+</button>
+</div>
+</aside>
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 left-[280px] z-40 bg-surface-container-lowest dark:bg-surface-container-lowest shadow-sm flex justify-between items-center h-16 px-xl">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Gestión Técnica</h2>
+<div class="relative ml-xl focus-within:ring-2 focus-within:ring-primary transition-all rounded-full bg-surface-container-low px-md py-xs flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-64 outline-none" placeholder="Buscar órdenes o clientes..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-sm">
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="p-xs hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Close-up studio portrait of a professional technical service manager." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf7qwheVFMKf1FtMqfz5NpNrxFFUmjjSDgnc8X0MaJooNaB0vrZnC2-zUbpPCPK-PbiRLdxo6MqPQD4LMPmJmQYJ2vJ2MlmnEX2j320V0r9Ccty33cusTT05sfBW8MkH3Emooe31QdACg_R7HtznkkqoViP3eYWzU6KqSBlRWG4B_YL7DZSYLuizCMAOoBjSjV4VzhHF0Lskz0KPind6a83ix79TSh--guNhBkQRdk5Tvqw7tYRC7_">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] pt-16 min-h-screen">
+<div class="max-w-[1440px] mx-auto px-xl py-xl">
+<!-- Hero Section / Context -->
+<div class="mb-xl flex justify-between items-end">
+<div>
+<h3 class="font-headline-xl text-headline-xl text-primary">Ingreso Técnico</h3>
+<p class="font-body-md text-on-surface-variant mt-sm">Registre una nueva orden de servicio para reparación de dispositivos.</p>
+</div>
+<div class="flex gap-md">
+<button class="px-xl py-md border border-outline-variant text-primary rounded-xl font-bold hover:bg-surface-container-low transition-all">Cancelar</button>
+<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg transition-all" onclick="toggleSuccess()">Guardar Orden</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter relative">
+<!-- Registration Form -->
+<div class="col-span-12 lg:col-span-8">
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-xl border border-surface-container-highest/50" id="registration-card">
+<form class="space-y-lg" id="serviceOrderForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Nombre Completo -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">NOMBRE COMPLETO DEL CLIENTE</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="e.g. Alejandro Rivera" type="text">
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="person">person</span>
+</div>
+</div>
+<!-- Teléfono -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">TELÉFONO DE CONTACTO</label>
+<div class="flex gap-xs">
+<div class="relative w-32 shrink-0">
+<select class="w-full appearance-none bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none text-body-sm pr-xl">
+<option value="+52">+52 (MX)</option>
+<option value="+1">+1 (US)</option>
+<option value="+34">+34 (ES)</option>
+<option value="+57">+57 (CO)</option>
+</select>
+<span class="absolute right-sm top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<input class="flex-grow bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="000-000-0000" type="tel">
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Marca del Teléfono -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">MARCA Y MODELO DEL DISPOSITIVO</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="e.g. Samsung Galaxy S21" type="text">
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="smartphone">smartphone</span>
+</div>
+</div>
+<!-- Email (Optional) -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">EMAIL DE NOTIFICACIÓN (OPCIONAL)</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="client@example.com" type="email">
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+</div>
+<!-- Daño -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">DESCRIPCIÓN DEL DAÑO / SÍNTOMAS</label>
+<textarea class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none min-h-[120px] resize-none" placeholder="Describa el problema detalladamente..."></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Valor de la Reparación -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">VALOR DE LA REPARACIÓN</label>
+<div class="relative group">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">$</span>
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="0.01" type="number">
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="payments">payments</span>
+</div>
+</div>
+<!-- Abono -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">ABONO INICIAL</label>
+<div class="relative group">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">$</span>
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="0.01" type="number">
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="receipt">receipt</span>
+</div>
+</div>
+</div>
+<div class="pt-xl">
+<div class="flex items-center gap-sm p-md bg-secondary-container/10 border border-secondary/20 rounded-xl">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+<p class="text-body-sm text-on-secondary-container">El cliente acepta los términos de garantía y tiempos de entrega estimados al firmar el ingreso.</p>
+</div>
+</div>
+</form>
+</section>
+</div>
+<!-- Info Panel / Visual Asset -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<div class="relative h-[200px] rounded-xl overflow-hidden shadow-sm group">
+<div class="absolute inset-0 bg-primary/40 z-10 mix-blend-overlay"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Technical workspace with micro-tools and electronic parts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs2vBHxxDA7LBV1orrZhS0sPNyPPHBoDJCRItvuSHPJmoLDisKUnBPnFy2InzEHFuU_Jc24pnE6G6ZjTpwxjYdu37lvqhb-mNWRjfgzQLU672mnC4qwuGRXrIIO27MrCU5NjpMAuAf2tJZLpvL9UvC6FvfpKtHMEHiz_1mZvbMJpL0bvCF-10-BjJlmpE2Auv06Fbjr9z8poroyh_A0t9whgM6rR5MugRKjl3DroxnWSMBdUpdjhhP">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent z-20 p-xl flex flex-col justify-end">
+<span class="text-white font-bold font-headline-md">Precisión Técnica.</span>
+<span class="text-white/80 font-body-sm">Documente cada detalle para un diagnóstico impecable.</span>
+</div>
+</div>
+<!-- Side Card: Protocol -->
+<div class="bg-surface-container-high rounded-xl p-xl flex flex-col gap-md">
+<h4 class="font-bold font-headline-md text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined" data-icon="rule">rule</span>
+                            Protocolo de Ingreso
+                        </h4>
+<ul class="space-y-md">
+<li class="flex gap-md">
+<span class="bg-white p-xs rounded-lg h-fit flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+</span>
+<div>
+<p class="font-bold text-body-sm">Pruebas Iniciales</p>
+<p class="text-body-sm text-on-surface-variant">Verifique encendido y estado físico antes de recibir.</p>
+</div>
+</li>
+<li class="flex gap-md">
+<span class="bg-white p-xs rounded-lg h-fit flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+</span>
+<div>
+<p class="font-bold text-body-sm">Abono Requerido</p>
+<p class="text-body-sm text-on-surface-variant">Se recomienda un 30% para repuestos especiales.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Success State Overlay (Hidden by Default) -->
+<div class="hidden absolute inset-0 z-50 flex items-center justify-center bg-surface/60 backdrop-blur-md rounded-xl" id="successOverlay">
+<div class="bg-white p-xl rounded-2xl shadow-xl max-w-md w-full text-center space-y-lg border border-secondary/20">
+<div class="w-20 h-20 bg-secondary-container/20 rounded-full flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-secondary text-5xl" data-icon="task_alt" style="font-variation-settings: &quot;FILL&quot; 1;">task_alt</span>
+</div>
+<div class="space-y-sm">
+<h4 class="font-headline-lg text-headline-lg text-primary">¡Orden Registrada!</h4>
+<p class="text-body-md text-on-surface-variant">La orden técnica ha sido creada exitosamente. Puede imprimir el recibo para el cliente ahora.</p>
+</div>
+<div class="flex flex-col gap-sm">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg transition-all" onclick="toggleSuccess()">Imprimir Recibo</button>
+<button class="w-full py-md border border-outline-variant text-primary rounded-xl font-bold hover:bg-surface-container-low transition-all" onclick="toggleSuccess()">Nueva Entrada</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Preview Section -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-xl bg-white rounded-xl shadow-sm border border-surface-container-highest">
+<p class="font-label-md text-label-md text-on-surface-variant">EQUIPOS EN TALLER</p>
+<p class="font-headline-xl text-headline-xl text-primary mt-sm">42</p>
+<div class="mt-md text-secondary font-bold text-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                        8 listos para entrega
+                    </div>
+</div>
+<div class="p-xl bg-white rounded-xl shadow-sm border border-surface-container-highest">
+<p class="font-label-md text-label-md text-on-surface-variant">PENDIENTES DE REPUESTO</p>
+<p class="font-headline-xl text-headline-xl text-primary mt-sm">12</p>
+<div class="mt-md text-error font-bold text-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="error_outline">error_outline</span>
+                        Requieren atención
+                    </div>
+</div>
+<div class="p-xl bg-white rounded-xl shadow-sm border border-surface-container-highest">
+<p class="font-label-md text-label-md text-on-surface-variant">RECAUDO POR ABONOS (HOY)</p>
+<p class="font-headline-xl text-headline-xl text-primary mt-sm">$1,450</p>
+<div class="mt-md text-on-primary-container font-bold text-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+                        Cierre parcial de caja
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        function toggleSuccess() {
+            const overlay = document.getElementById('successOverlay');
+            overlay.classList.toggle('hidden');
+        }
+
+        const navItems = document.querySelectorAll('aside nav a');
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                if(!item.classList.contains('border-r-4')) {
+                   item.classList.add('translate-x-1');
+                }
+            });
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('translate-x-1');
+            });
+        });
+    </script>
+
+
+
+
+
+
+</body></html>
