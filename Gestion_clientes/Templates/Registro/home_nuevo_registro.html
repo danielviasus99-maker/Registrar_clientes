@@ -193,16 +193,10 @@
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant block">TELÉFONO DE CONTACTO</label>
 <div class="flex gap-xs">
-<div class="relative w-32 shrink-0">
-<select class="w-full appearance-none bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none text-body-sm pr-xl">
-<option value="+52">+52 (MX)</option>
-<option value="+1">+1 (US)</option>
-<option value="+34">+34 (ES)</option>
-<option value="+57">+57 (CO)</option>
-</select>
-<span class="absolute right-sm top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant pointer-events-none" data-icon="expand_more">expand_more</span>
-</div>
-<input class="flex-grow bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="000-000-0000" type="tel">
+<div class="w-16 shrink-0 flex items-center justify-center bg-surface-container-low rounded-lg px-md py-md font-body-sm text-on-surface-variant font-bold">
+                                    +57
+                                </div>
+<input class="flex-grow bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="300-000-0000" type="tel">
 </div>
 </div>
 </div>
@@ -228,6 +222,21 @@
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant block">DESCRIPCIÓN DEL DAÑO / SÍNTOMAS</label>
 <textarea class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none min-h-[120px] resize-none" placeholder="Describa el problema detalladamente..."></textarea>
+</div>
+<!-- Fotos del Equipo -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">FOTOS DEL EQUIPO (OPCIONAL, MÁX. 5)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-lg p-lg text-center hover:border-primary transition-colors cursor-pointer" id="photoDropZone" onclick="document.getElementById('photoInput').click()">
+<span class="material-symbols-outlined text-outline-variant text-4xl" data-icon="add_a_photo">add_a_photo</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Toque para tomar o seleccionar fotos</p>
+<p class="text-[12px] text-outline-variant">JPG o PNG, máx. 15MB por foto</p>
+<input accept="image/*" capture="environment" class="hidden" id="photoInput" multiple type="file">
+</div>
+<div class="flex items-center justify-between mt-xs">
+<p class="text-[12px] text-on-surface-variant" id="photoCounter">0 de 5 fotos (opcional)</p>
+</div>
+<p class="text-[12px] text-error hidden" id="photoError"></p>
+<div class="grid grid-cols-3 sm:grid-cols-5 gap-sm mt-sm" id="photoPreviewGrid"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
 <!-- Valor de la Reparación -->
@@ -346,6 +355,74 @@
         function toggleSuccess() {
             const overlay = document.getElementById('successOverlay');
             overlay.classList.toggle('hidden');
+        }
+
+        // --- Manejo de fotos del equipo ---
+        const MAX_PHOTO_SIZE_MB = 15;
+        const MAX_PHOTOS = 5;
+        let selectedPhotos = [];
+
+        const photoInput = document.getElementById('photoInput');
+        const photoPreviewGrid = document.getElementById('photoPreviewGrid');
+        const photoCounter = document.getElementById('photoCounter');
+        const photoError = document.getElementById('photoError');
+
+        photoInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            photoError.classList.add('hidden');
+
+            files.forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+                if (selectedPhotos.length >= MAX_PHOTOS) {
+                    photoError.textContent = `Ya alcanzaste el máximo de ${MAX_PHOTOS} fotos.`;
+                    photoError.classList.remove('hidden');
+                    return;
+                }
+                if (file.size > MAX_PHOTO_SIZE_MB * 1024 * 1024) {
+                    photoError.textContent = `"${file.name}" supera los ${MAX_PHOTO_SIZE_MB}MB y no se agregó.`;
+                    photoError.classList.remove('hidden');
+                    return;
+                }
+                selectedPhotos.push(file);
+            });
+
+            renderPhotoPreviews();
+            photoInput.value = ''; // permite volver a seleccionar el mismo archivo
+        });
+
+        function renderPhotoPreviews() {
+            photoPreviewGrid.innerHTML = '';
+            selectedPhotos.forEach((file, index) => {
+                const url = URL.createObjectURL(file);
+                const wrapper = document.createElement('div');
+                wrapper.className = 'relative aspect-square rounded-lg overflow-hidden group border border-surface-container-highest';
+                wrapper.innerHTML = `
+                    <img src="${url}" class="w-full h-full object-cover">
+                    <button type="button" class="absolute top-1 right-1 bg-black/60 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" onclick="removePhoto(${index})">
+                        <span class="material-symbols-outlined text-[16px]">close</span>
+                    </button>
+                `;
+                photoPreviewGrid.appendChild(wrapper);
+            });
+
+            const count = selectedPhotos.length;
+            photoCounter.textContent = count === 0
+                ? `0 de ${MAX_PHOTOS} fotos (opcional)`
+                : `${count} de ${MAX_PHOTOS} fotos`;
+            photoCounter.classList.toggle('text-secondary', count > 0);
+            photoCounter.classList.toggle('font-bold', count > 0);
+
+            const dropZone = document.getElementById('photoDropZone');
+            if (count >= MAX_PHOTOS) {
+                dropZone.classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                dropZone.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        function removePhoto(index) {
+            selectedPhotos.splice(index, 1);
+            renderPhotoPreviews();
         }
 
         const navItems = document.querySelectorAll('aside nav a');
