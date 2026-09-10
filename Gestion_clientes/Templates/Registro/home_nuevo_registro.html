@@ -1,3 +1,5 @@
+{% load humanize %}
+${{ orden.valor_reparacion|intcomma }}
 <!DOCTYPE html><html class="light" lang="es" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -244,7 +246,7 @@
 <label class="font-label-md text-label-md text-on-surface-variant block">VALOR DE LA REPARACIÓN</label>
 <div class="relative group">
 <span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">$</span>
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="0.01" type="number">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="1000" type="number">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="payments">payments</span>
 </div>
 </div>
@@ -253,7 +255,7 @@
 <label class="font-label-md text-label-md text-on-surface-variant block">ABONO INICIAL</label>
 <div class="relative group">
 <span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">$</span>
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="0.01" type="number">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="1000" type="number">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="receipt">receipt</span>
 </div>
 </div>
