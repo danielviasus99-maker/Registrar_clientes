@@ -136,17 +136,13 @@
 </div>
 <nav class="flex-1 space-y-sm">
 <!-- Active State: Dashboard -->
-<a class="flex items-center gap-md py-md px-lg rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-highest/30 transition-all duration-200" href="{% url 'home' %}">
-<span class="material-symbols-outlined">dashboard</span>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high transition-all duration-200" href="{% url 'home' %}">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-label-md text-label-md">Resumen</span>
 </a>
-<a class="flex items-center gap-md py-md px-lg rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="{% url 'home_nuevo_registro' %}">
+<a class="flex items-center gap-md py-md px-lg rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-highest/30 transition-all duration-200" href="{% url 'home_registros' %}">
 <span class="material-symbols-outlined">group</span>
 <span class="font-label-md text-label-md">Clientes</span>
-</a>
-<a class="flex items-center gap-md py-md px-lg rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-highest/30 transition-all duration-200" href="{% url 'home_registros' %}">
-<span class="material-symbols-outlined">engineering</span>
-<span class="font-label-md text-label-md">Registros</span>
 </a>
 </nav>
 <div class="mt-auto pt-lg border-t border-outline-variant/20">
@@ -157,13 +153,7 @@
             </button>
 </a>
 <div class="flex items-center gap-md mt-xl p-sm rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer">
-<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center">
-<img class="w-full h-full object-cover" data-alt="Professional corporate headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1u5tViZgLJji7U1Pyc3E1Mv6lxp8JnGJ0DS6SDAsf0tYOgGUSpvqEp4Ed1vCflkxZfMB_2TVKJoXVlBy45A6CNrzOv7SmP7pguMqoCQiHe9cxn55viNZge6vs8pC4ZNNqGHDAdgVoqZOaAOImooQ71jEy0IViM4hrtGYRf0XBuEBYDIOF3hP-6rC-6byDinOxm1xDfcf2OGhXfdBPS3nNRouT5sGqhS0wL4I6VrAlkWIJsQpb01Jw"/>
-</div>
-<div>
-<p class="font-label-md text-label-md text-on-surface">Alex Rivera</p>
-<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Gestor de Proyectos</p>
-</div>
+
 </div>
 </div>
 </aside>
@@ -172,8 +162,8 @@
 <!-- TopNavBar Structure -->
 <header class="flex justify-between items-center h-16 mb-xl">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-primary">Panel de Control</h2>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Seguimiento de actividad y entradas de servicio</p>
+<h2 class="font-headline-lg text-headline-lg text-primary">Informacion Detallada</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Visualización detallada de los registros de clientes</p>
 </div>
 <div class="flex items-center gap-lg">
 <div class="relative group">
@@ -303,12 +293,6 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="p-lg flex justify-center bg-surface-container-lowest">
-<button class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors flex items-center gap-xs">
-                    Ver Todos los Registros
-                    <span class="material-symbols-outlined">arrow_forward</span>
-</button>
 </div>
 </section>
 </main>
