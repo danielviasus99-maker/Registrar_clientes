@@ -7,3 +7,6 @@ def home_nuevo_registro(request):
 
 def home_principal(request):
     return render(request, 'home.html')
+
+def home_registros(request):
+    return render(request, 'Registro/home_registros.html')
