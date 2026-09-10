@@ -1,3 +1,4 @@
+${{ orden.valor_reparacion|floatformat:0 }}
 <!DOCTYPE html><html class="light" lang="es" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -172,21 +173,20 @@
 </div>
 <div class="flex gap-md">
 <button class="px-xl py-md border border-outline-variant text-primary rounded-xl font-bold hover:bg-surface-container-low transition-all">Cancelar</button>
-<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg transition-all" form="serviceOrderForm" type="submit">Guardar Orden</button>
+<button class="px-xl py-md bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg transition-all" onclick="toggleSuccess()">Guardar Orden</button>
 </div>
 </div>
 <div class="grid grid-cols-12 gap-gutter relative">
 <!-- Registration Form -->
 <div class="col-span-12 lg:col-span-8">
 <section class="bg-surface-container-lowest rounded-xl shadow-sm p-xl border border-surface-container-highest/50" id="registration-card">
-<form class="space-y-lg" id="serviceOrderForm" method="post" enctype="multipart/form-data" action="{% url 'home_nuevo_registro' %}">
-{% csrf_token %}
+<form class="space-y-lg" id="serviceOrderForm">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
 <!-- Nombre Completo -->
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant block">NOMBRE COMPLETO DEL CLIENTE</label>
 <div class="relative group">
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" name="nombre" placeholder="e.g. Alejandro Rivera" type="text">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="e.g. Alejandro Rivera" type="text">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="person">person</span>
 </div>
 </div>
@@ -197,7 +197,7 @@
 <div class="w-16 shrink-0 flex items-center justify-center bg-surface-container-low rounded-lg px-md py-md font-body-sm text-on-surface-variant font-bold">
                                     +57
                                 </div>
-<input class="flex-grow bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" name="telefono" placeholder="300-000-0000" type="tel">
+<input class="flex-grow bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="300-000-0000" type="tel">
 </div>
 </div>
 </div>
@@ -206,7 +206,7 @@
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant block">MARCA Y MODELO DEL DISPOSITIVO</label>
 <div class="relative group">
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" name="dispositivo" placeholder="e.g. Samsung Galaxy S21" type="text">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="e.g. Samsung Galaxy S21" type="text">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="smartphone">smartphone</span>
 </div>
 </div>
@@ -214,7 +214,7 @@
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant block">EMAIL DE NOTIFICACIÓN (OPCIONAL)</label>
 <div class="relative group">
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" name="email" placeholder="client@example.com" type="email">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none" placeholder="client@example.com" type="email">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="alternate_email">alternate_email</span>
 </div>
 </div>
@@ -222,7 +222,7 @@
 <!-- Daño -->
 <div class="space-y-xs">
 <label class="font-label-md text-label-md text-on-surface-variant block">DESCRIPCIÓN DEL DAÑO / SÍNTOMAS</label>
-<textarea class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none min-h-[120px] resize-none" name="descripcion_dano" placeholder="Describa el problema detalladamente..."></textarea>
+<textarea class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg px-md py-md transition-all outline-none min-h-[120px] resize-none" placeholder="Describa el problema detalladamente..."></textarea>
 </div>
 <!-- Fotos del Equipo -->
 <div class="space-y-xs">
@@ -231,7 +231,7 @@
 <span class="material-symbols-outlined text-outline-variant text-4xl" data-icon="add_a_photo">add_a_photo</span>
 <p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Toque para tomar o seleccionar fotos</p>
 <p class="text-[12px] text-outline-variant">JPG o PNG, máx. 15MB por foto</p>
-<input accept="image/*" capture="environment" class="hidden" id="photoInput" multiple name="fotos" type="file">
+<input accept="image/*" capture="environment" class="hidden" id="photoInput" multiple type="file">
 </div>
 <div class="flex items-center justify-between mt-xs">
 <p class="text-[12px] text-on-surface-variant" id="photoCounter">0 de 5 fotos (opcional)</p>
@@ -245,7 +245,7 @@
 <label class="font-label-md text-label-md text-on-surface-variant block">VALOR DE LA REPARACIÓN</label>
 <div class="relative group">
 <span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">$</span>
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" name="valor_reparacion" placeholder="0" step="1" type="number">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="1000" type="number">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="payments">payments</span>
 </div>
 </div>
@@ -254,7 +254,7 @@
 <label class="font-label-md text-label-md text-on-surface-variant block">ABONO INICIAL</label>
 <div class="relative group">
 <span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">$</span>
-<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" name="abono_inicial" placeholder="0" step="1" type="number">
+<input class="w-full bg-surface-container-low border-2 border-transparent focus:border-primary focus:bg-white rounded-lg pl-xl pr-md py-md transition-all outline-none" placeholder="0.00" step="1000" type="number">
 <span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant group-focus-within:text-primary" data-icon="receipt">receipt</span>
 </div>
 </div>
@@ -388,14 +388,10 @@
             });
 
             renderPhotoPreviews();
+            photoInput.value = ''; // permite volver a seleccionar el mismo archivo
         });
 
         function renderPhotoPreviews() {
-            // Sincroniza el input real con el arreglo, para que el <form> envíe TODAS las fotos acumuladas
-            const dataTransfer = new DataTransfer();
-            selectedPhotos.forEach(file => dataTransfer.items.add(file));
-            photoInput.files = dataTransfer.files;
-
             photoPreviewGrid.innerHTML = '';
             selectedPhotos.forEach((file, index) => {
                 const url = URL.createObjectURL(file);
