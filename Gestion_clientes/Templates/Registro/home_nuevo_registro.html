@@ -307,7 +307,7 @@
 </div>
 </div>
 <!-- Success State Overlay (Hidden by Default) -->
-<div class="hidden absolute inset-0 z-50 flex items-center justify-center bg-surface/60 backdrop-blur-md rounded-xl" id="successOverlay">
+<div class="{% if not exito %}hidden {% endif %}absolute inset-0 z-50 flex items-center justify-center bg-surface/60 backdrop-blur-md rounded-xl" id="successOverlay">
 <div class="bg-white p-xl rounded-2xl shadow-xl max-w-md w-full text-center space-y-lg border border-secondary/20">
 <div class="w-20 h-20 bg-secondary-container/20 rounded-full flex items-center justify-center mx-auto">
 <span class="material-symbols-outlined text-secondary text-5xl" data-icon="task_alt" style="font-variation-settings: &quot;FILL&quot; 1;">task_alt</span>
@@ -317,8 +317,8 @@
 <p class="text-body-md text-on-surface-variant">La orden técnica ha sido creada exitosamente. Puede imprimir el recibo para el cliente ahora.</p>
 </div>
 <div class="flex flex-col gap-sm">
-<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg transition-all" onclick="toggleSuccess()">Imprimir Recibo</button>
-<button class="w-full py-md border border-outline-variant text-primary rounded-xl font-bold hover:bg-surface-container-low transition-all" onclick="toggleSuccess()">Nueva Entrada</button>
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-bold hover:shadow-lg transition-all" onclick="window.print()">Imprimir Orden</button>
+<button class="w-full py-md border border-outline-variant text-primary rounded-xl font-bold hover:bg-surface-container-low transition-all" onclick="window.location.href='{% url 'home_nuevo_registro' %}'">Nuevo Registro</button>
 </div>
 </div>
 </div>

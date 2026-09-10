@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .models import Cliente, OrdenServicio, FotoOrden
 
 # Create your views here.
@@ -23,12 +24,16 @@ def home_nuevo_registro(request):
         for foto in fotos[:5]:
             FotoOrden.objects.create(orden=orden, imagen=foto)
 
-        return redirect('home_registros')
+        return redirect(f"{reverse('home_nuevo_registro')}?exito=1")
 
-    return render(request, 'Registro/home_nuevo_registro.html')
+    exito = request.GET.get('exito') == '1'
+    return render(request, 'Registro/home_nuevo_registro.html', {'exito': exito})
+
 
 def home_principal(request):
     return render(request, 'home.html')
 
+
 def home_registros(request):
-    return render(request, 'Registro/home_registros.html')
+    ordenes = OrdenServicio.objects.select_related('cliente').prefetch_related('fotos').order_by('-fecha_creacion')
+    return render(request, 'Registro/home_registros.html', {'ordenes': ordenes})
