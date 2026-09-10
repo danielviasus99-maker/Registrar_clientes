@@ -140,14 +140,11 @@
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-label-md text-label-md">Resumen</span>
 </a>
-<a class="flex items-center gap-md py-md px-lg rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
+<a class="flex items-center gap-md py-md px-lg rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="{% url 'home_registros' %}">
 <span class="material-symbols-outlined">group</span>
 <span class="font-label-md text-label-md">Clientes</span>
 </a>
-<a class="flex items-center gap-md py-md px-lg rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all duration-200" href="#">
-<span class="material-symbols-outlined">engineering</span>
-<span class="font-label-md text-label-md">Registros</span>
-</a>
+
 </nav>
 <div class="mt-auto pt-lg border-t border-outline-variant/20">
 <a href="{% url 'home_nuevo_registro' %}" class="w-full block">
