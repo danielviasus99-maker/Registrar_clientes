@@ -127,3 +127,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+#Monto Colombiano
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = "."
+DECIMAL_SEPARATOR = ","
