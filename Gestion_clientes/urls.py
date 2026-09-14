@@ -1,4 +1,3 @@
-from django.db import router
 from django.urls import path, include
 from .views import home_nuevo_registro, home_principal, home_registros
 from rest_framework.routers import DefaultRouter

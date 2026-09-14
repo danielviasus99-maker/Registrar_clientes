@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'Gestion_clientes',
     "django.contrib.humanize",
+    'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,6 +138,18 @@ THOUSAND_SEPARATOR = "."
 DECIMAL_SEPARATOR = ","
 
 
-#Configuracion API REST Framework
+#Variables de configuracion API REST Framework
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+# Habilitar el uso de cors
+CORS_ALLOW_ALL_ORIGINS = True  # Si usas esto, CORS_ALLOWED_ORIGINS no tiene efecto
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r'^http://localhost:8000$',
+]

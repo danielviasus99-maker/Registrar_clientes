@@ -56,3 +56,21 @@ class FotoOrdenViewSet(viewsets.ModelViewSet):
     serializer_class = FotoOrdenSerializer
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
