@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Cliente, OrdenServicio, FotoOrden
+from rest_framework import viewsets
+from .serializers import ClienteSerializer, OrdenServicioSerializer, FotoOrdenSerializer
 
 # Create your views here.
 
@@ -37,3 +39,20 @@ def home_principal(request):
 def home_registros(request):
     ordenes = OrdenServicio.objects.select_related('cliente').prefetch_related('fotos').order_by('-fecha_creacion')
     return render(request, 'Registro/home_registros.html', {'ordenes': ordenes})
+
+#Clases de API REST Framework
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all().order_by('-id')
+    serializer_class = ClienteSerializer
+
+
+class OrdenServicioViewSet(viewsets.ModelViewSet):
+    queryset = OrdenServicio.objects.all().order_by('-fecha_creacion')
+    serializer_class = OrdenServicioSerializer
+
+
+class FotoOrdenViewSet(viewsets.ModelViewSet):
+    queryset = FotoOrden.objects.all()
+    serializer_class = FotoOrdenSerializer
+
+

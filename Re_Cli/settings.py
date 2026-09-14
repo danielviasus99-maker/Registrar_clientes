@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'Gestion_clientes',
     "django.contrib.humanize",
 ]
@@ -132,3 +133,8 @@ MAILERS = {
 USE_THOUSAND_SEPARATOR = True
 THOUSAND_SEPARATOR = "."
 DECIMAL_SEPARATOR = ","
+
+
+#Configuracion API REST Framework
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
